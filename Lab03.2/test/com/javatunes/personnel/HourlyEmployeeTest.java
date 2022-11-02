@@ -26,4 +26,5 @@ public class HourlyEmployeeTest {
     public void testPayTaxes() {
         assertEquals(100.0,hourlyEmployee.payTaxes(),.001);
     }
+
 }

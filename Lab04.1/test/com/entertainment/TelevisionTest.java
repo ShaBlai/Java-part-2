@@ -9,9 +9,19 @@
 package com.entertainment;
 
 import static org.junit.Assert.*;
+
+import com.entertainment.catalog.Catalog;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class TelevisionTest {
+
+  private Television tvActual;
 
   @Test
   public void testSetVolume() {
@@ -113,4 +123,32 @@ public class TelevisionTest {
     tv2.setBrand("RCA");
     assertTrue(tv1.compareTo(tv2) == 0); // RCA = RCA
   }
+
+
+  //Arrange and create the object
+
+  @Test
+  //Act and invoke the method associated with the object
+  public void findByBrandWithNoMatches() {
+    Collection <Television> tvs = Catalog.findByBrand("NO-MATCHES");
+    assertNotNull(tvs);
+    assertTrue(tvs.isEmpty());
+  }
+
+  public void findByBrandWithAName(){
+    //arrange
+    Collection<Television> tvs = Catalog.findByBrand("Sony");
+
+    //act
+    //create your expected value
+    Collection <Television> expectedCollection = new ArrayList<>();
+
+    //assert
+    Assert.assertEquals(expectedCollection, tvs);
+
+  }
+
+
+
+
 }
